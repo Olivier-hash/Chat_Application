@@ -6,16 +6,14 @@ function Sidebar({selectedUser, setSelectedUser}) {
       <div className='pb-5'>
         <div className='flex justify-between items-center'>
            <img src={assets.logo} alt="Logo" className='max-w-40 '/>
+           <div className='relative py-2 group'>
+            <img src={assets.menu_icon} alt="Menu" className='max-h-5 cursor-pointer'/>
+           </div>
         </div>
       </div>
     </div>
   )
 }
 
-
-
-
-
-// sidemenu
 
 export default Sidebar
