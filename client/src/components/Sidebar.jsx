@@ -1,8 +1,14 @@
 import React from 'react'
-
-function Sidebar() {
+import assets from '../assets/assets'
+function Sidebar({selectedUser, setSelectedUser}) {
   return (
-    <div>Sidebar</div>
+    <div>
+      <div className='pb-5'>
+        <div className='flex justify-between items-center'>
+           <img src={assets.logo} alt="Logo" className='max-w-40 '/>
+        </div>
+      </div>
+    </div>
   )
 }
 
