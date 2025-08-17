@@ -1,6 +1,13 @@
 import React from 'react'
 import assets from '../assets/assets'
+import {useNavigate} from 'react-router-dom'
+
+
 function Sidebar({selectedUser, setSelectedUser}) {
+
+
+const navigate = useNavigate();
+
   return (
     <div>
       <div className='pb-5'>
