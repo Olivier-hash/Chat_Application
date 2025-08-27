@@ -25,6 +25,10 @@ const navigate = useNavigate();
 
            </div>
         </div>
+        {/* search button */}
+            <div>
+
+            </div>
       </div>
     </div>
   )
