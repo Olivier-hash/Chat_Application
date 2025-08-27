@@ -26,9 +26,11 @@ const navigate = useNavigate();
            </div>
         </div>
         {/* search button */}
-            <div>
+            <div className='bg-[#282142 rounded-full]'>
               <img src={assets.search_icon} alt="Search" className='w-3'/>
+              <input type="text" className='bg-transparent border-none outline-none text-white text-xs placeholder-[#c8c8c8] flex-1' placeholder='Search-users.....' />
             </div>
+
       </div>
     </div>
   )
