@@ -27,7 +27,7 @@ const navigate = useNavigate();
         </div>
         {/* search button */}
             <div>
-
+              <img src={assets.search_icon} alt="Search" className='w-3'/>
             </div>
       </div>
     </div>
