@@ -1,5 +1,5 @@
 import React from 'react'
-import assets from '../assets/assets'
+import assets, { userDummyData } from '../assets/assets'
 import {useNavigate} from 'react-router-dom'
 
 
@@ -25,6 +25,7 @@ const navigate = useNavigate();
 
            </div>
         </div>
+
         {/* search button */}
             <div className='bg-[#282142] rounded-full flex items-center gap-2 py-3 px-4 mt-5'>
               <img src={assets.search_icon} alt="Search" className='w-3'/>
@@ -32,6 +33,15 @@ const navigate = useNavigate();
             </div>
 
       </div>
+      {/* users Profile */}
+      <div className='flex flex-col'>
+        {userDummyData.map((user,index)=>(
+          <div>
+            <img src={user?.profilePic || assets.avatar_icon} alt="" className='w-[35px] aspect-[1/1] rounded-full' />
+          </div>
+        ))}
+      </div>
+      
     </div>
   )
 }
