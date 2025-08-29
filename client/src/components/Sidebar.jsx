@@ -5,7 +5,6 @@ import {useNavigate} from 'react-router-dom'
 
 function Sidebar({selectedUser, setSelectedUser}) {
 
-
 const navigate = useNavigate();
 
   return (
@@ -41,7 +40,7 @@ const navigate = useNavigate();
           </div>
         ))}
       </div>
-      
+
     </div>
   )
 }
