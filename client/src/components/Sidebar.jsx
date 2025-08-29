@@ -41,7 +41,8 @@ const navigate = useNavigate();
               <p>{user.fullName}</p>
               {
                 index < 3 
-                ? <span>Online</span> : <span>Offline</span>
+                ? <span className='text-green-400 text-xs'>Online</span> 
+                : <span className='text-neutral-400 text-xs'>Offline</span>
               }
             </div>
           </div>
