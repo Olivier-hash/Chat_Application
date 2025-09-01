@@ -19,7 +19,7 @@ function ChatContainer({selectedUser, setSelectedUser}) {    // added all setSel
       {/* ---------- chat area ---------- */}
       <div className='flex flex-col h-[calc(100%-120px)] overflow-y-scroll p-3 pb-6'>
         {messagesDummyData.map((msg, index)=>(
-          <div key={index}>
+          <div key={index} className={`flex items-end gap-2 justify-end ${msg.senderId !== '23873hns8992nnkjh42' && 'flex-row-reverse'}`}>
 
           </div>
         ))}
