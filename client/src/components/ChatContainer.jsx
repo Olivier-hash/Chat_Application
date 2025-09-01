@@ -10,6 +10,8 @@ function ChatContainer() {
           Martin Johnson
           <span className='w-2 h-2 rounded-full bg-green-500'></span>
         </p>
+        {/* Info icon and description */}
+        <img src={assets.arrow_icon} alt="" className='md:hidden max-w-7' />
       </div>
     </div>
   )
