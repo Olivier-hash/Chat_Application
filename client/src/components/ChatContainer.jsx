@@ -24,9 +24,13 @@ function ChatContainer({selectedUser, setSelectedUser}) {    // added all setSel
               <img src={msg.image} alt="" className='max-w-[230px] border border-gray-700 rounded-lg overflow-hidden mb-8' />
             ): (
               <p className={`p-2 max-w-[200px] md:text-sm font-light rounded-lg mb-8 break-all bg-violet-500/30 text-white
-                 ${msg.senderId == '23873hns8992nnkjh42' ? 'rounded-br-none' : '' }`}>{msg.text}
+                 ${msg.senderId == '23873hns8992nnkjh42' ? 'rounded-br-none' : 'rounded-bl-none' }`}>{msg.text}
               </p>
             )}
+            {/* ID: 680f50e4f10f3cd28382ecf9 */}
+            <div>
+              <img src={msg.senderId ==='23873hns8992nnkjh42' } alt="" />
+            </div>
           </div>
         ))}
       </div>
