@@ -29,7 +29,9 @@ function ChatContainer({selectedUser, setSelectedUser}) {    // added all setSel
             )}
             {/* ID: 680f50e4f10f3cd28382ecf9 */}
             <div>
-              <img src={msg.senderId ==='23873hns8992nnkjh42' } alt="" />
+              <img src={msg.senderId ==='23873hns8992nnkjh42' ? 
+              assets.avatar_icon : assets.profile_martin} alt="" className='w-7 rounded-full'/>
+              <p className='text-gray-500'>{msg.createdAt}</p>
             </div>
           </div>
         ))}
