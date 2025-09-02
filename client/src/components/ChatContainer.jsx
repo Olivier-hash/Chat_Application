@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import assets, { messagesDummyData } from '../assets/assets'
                                                              // Props Destructuring
 function ChatContainer({selectedUser, setSelectedUser}) {    // added all setSelected userprops to be used onclick as a Function
   
+
+  const scrollEnd = useRef()
+
   return selectedUser ? (
     <div className='h-full overflow-scroll relative backdrop-blur-lg'>
       {/* --------------- header --------------- */}
@@ -35,7 +38,11 @@ function ChatContainer({selectedUser, setSelectedUser}) {    // added all setSel
             </div>
           </div>
         ))}
-        {/* Reference */}
+        {/* Scroll Reference */}
+        <div ref={scrollEnd} >
+
+        </div>
+
       </div>
     </div>
   ) : (
