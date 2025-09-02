@@ -1,10 +1,17 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import assets, { messagesDummyData } from '../assets/assets'
                                                              // Props Destructuring
 function ChatContainer({selectedUser, setSelectedUser}) {    // added all setSelected userprops to be used onclick as a Function
   
 
   const scrollEnd = useRef()
+
+
+  useEffect(()=>{     // with depedency
+    if (scrollEnd.current.scrollIntoView({ behavior: "smooth"})) {
+      
+    }
+  })
 
   return selectedUser ? (
     <div className='h-full overflow-scroll relative backdrop-blur-lg'>
