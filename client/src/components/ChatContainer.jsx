@@ -9,7 +9,7 @@ function ChatContainer({selectedUser, setSelectedUser}) {    // added all setSel
 
   useEffect(()=>{     // useEffect with depedency
     if (scrollEnd.current) {
-      
+      scrollEnd.current.scrollIntoView({ behavior: "smooth"})
     }
   },[])
 
