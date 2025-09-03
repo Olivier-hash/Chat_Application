@@ -7,11 +7,11 @@ function ChatContainer({selectedUser, setSelectedUser}) {    // added all setSel
   const scrollEnd = useRef()
 
 
-  useEffect(()=>{     // with depedency
+  useEffect(()=>{     // useEffect with depedency
     if (scrollEnd.current.scrollIntoView({ behavior: "smooth"})) {
       
     }
-  })
+  },[])
 
   return selectedUser ? (
     <div className='h-full overflow-scroll relative backdrop-blur-lg'>
