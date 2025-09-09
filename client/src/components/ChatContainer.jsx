@@ -63,6 +63,7 @@ function ChatContainer({selectedUser, setSelectedUser}) {    // added all setSel
             <img src={assets.gallery_icon} alt="" className='w-5 mr-2 cursor-pointer'/>
           </label>
         </div>
+        <img src={assets.gallery_icon} alt="" />
       </div>
 
 
