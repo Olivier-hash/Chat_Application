@@ -1,8 +1,10 @@
 import React from 'react'
 
-function RightSidebar() {
-  return (
-    <div>Right Sidebar</div>
+function RightSidebar({selectedUser}) { // destructurung selected user from the props 
+  return selectedUser && (
+    <div>
+      
+    </div>
   )
 }
 
