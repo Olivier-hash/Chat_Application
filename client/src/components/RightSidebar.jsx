@@ -25,8 +25,8 @@ function RightSidebar({selectedUser}) { // destructurung selected user from the 
         <div className='mt-2 max-h-[200px] overflow-y-scroll grid grid-cols-2 gap-4 
         opacity-80'>
              {imagesDummyData.map((url, index)=> (
-              <div>
-
+              <div key={index} onClick={()=> window.open(url)} className='cursor-pointer rounded'>
+                <img src={url} alt="" className='h-full rounded-md' />
               </div>
              ))}
         </div>
