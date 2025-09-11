@@ -1,5 +1,5 @@
 import React from 'react'
-import assets from '../assets/assets'
+import assets, { imagesDummyData } from '../assets/assets'
 
 function RightSidebar({selectedUser}) { // destructurung selected user from the props 
   return selectedUser && (
@@ -21,7 +21,15 @@ function RightSidebar({selectedUser}) { // destructurung selected user from the 
 
       <hr className='border-[#ffffff50] my-4' />
       <div className='px-5 text-xs'>
-        
+        <p>Media</p>
+        <div className='mt-2 max-h-[200px] overflow-y-scroll grid grid-cols-2 gap-4 
+        opacity-80'>
+             {imagesDummyData.map((url, index)=> (
+              <div>
+
+              </div>
+             ))}
+        </div>
       </div>
     </div>
   )
