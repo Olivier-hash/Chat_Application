@@ -20,7 +20,10 @@ const [currState, setCurrState] = useState("Sign up")
 
       <form className='border-2 bg-white/8 text-white border-gray-500 p-6 
       flex flex-col gap-6 rounded-lg shadow-lg'>
-
+        <h2 className='font-medium text-2xl flex justify-between items-center'>
+          {currState}
+          <img src={assets.arrow_icon} alt="" className='w-5 cursor-pointer' />
+        </h2>
       </form>
     </div>
   )
