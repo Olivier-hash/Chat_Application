@@ -7,7 +7,7 @@ function RightSidebar({selectedUser}) { // destructurung selected user from the 
     <div className={`bg-[#818582]/10 text-white w-full relative overflow-y-scroll
     ${selectedUser ? "max-md:hidden" : ""}`}> 
     
-      <div className='pt-16 flex flex-col items-center gap-2 text-xs font-light mx-auto'>
+      <div className='pt-5 flex flex-col items-center gap-2 text-xs font-light mx-auto'>
         <img src={selectedUser?.profilePic || assets.avatar_icon} alt=""
         className='w-20 aspect-[1/1] rounded-full' />
         <h1 className='px-10 text-xl font-medium mx-auto flex items-center gap-2'>
