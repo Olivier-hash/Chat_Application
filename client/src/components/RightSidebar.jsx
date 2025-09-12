@@ -19,7 +19,7 @@ function RightSidebar({selectedUser}) { // destructurung selected user from the 
         <p className='px-10 mx-auto'>{selectedUser.bio}</p>
       </div>
 
-      <hr className='border-[#ffffff50] my-4' />
+      <hr className='border-[#ffff ff50] my-4' />
       <div className='px-5 text-xs'>
         <p>Media</p>
         <div className='mt-2 max-h-[200px] overflow-y-scroll grid grid-cols-2 gap-4 
@@ -31,9 +31,9 @@ function RightSidebar({selectedUser}) { // destructurung selected user from the 
              ))}
         </div>
       </div>
-
+{/* problem in front identified 1:27:30 */}
       <button className='absolute bottom-5 left-1/2 transform -translate-x-1/2 
-      bg-gradient-to-r from-purple-400 to-violet-600 text-white border-none text-sm
+      bg-gradient-to-r from-purple-400 to-violet-600 text-white border-0 text-sm
       font-light py-2 px-20 rounded-full cursor-pointer'>
            Logout
       </button>
