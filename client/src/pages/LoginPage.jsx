@@ -3,10 +3,14 @@ import assets from '../assets/assets'
 
 function LoginPage() {
 
-// STATE VARIABLE
+// STATE VARIABLES
 
-const [currState, setCurrState] = useState("Sign up")
-
+  const [currState, setCurrState] = useState("Sign up")
+  const [fullName, setFullName] =useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [bio, setBio] = useState("")
+  const [isDataSubmitted, setIsDataSubmitted] = useState(false);
 
 
   return (
@@ -24,6 +28,12 @@ const [currState, setCurrState] = useState("Sign up")
           {currState}
           <img src={assets.arrow_icon} alt="" className='w-5 cursor-pointer' />
         </h2>
+
+        {currState === "Sign up" && (
+          <input type="text" className='p-2 border border-gray-500 rounded-md 
+           focus:outline-none' placeholder='Full Name' required/>
+        )}
+        
       </form>
     </div>
   )
