@@ -55,6 +55,11 @@ function LoginPage() {
           placeholder='provide a short bio...' required></textarea>
         )
         }
+        {/* Submit button */}
+        <button type='submit' className='py-3 bg-gradient-to-r from-purple-400 to-violet-600
+        text-white rounded-md cursor-pointer'>
+          {currState === "Sign up" ? "Create Account" : "Login Now"}
+        </button>
 
       </form>
     </div>
