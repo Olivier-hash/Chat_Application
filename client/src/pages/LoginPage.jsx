@@ -29,11 +29,20 @@ function LoginPage() {
           <img src={assets.arrow_icon} alt="" className='w-5 cursor-pointer' />
         </h2>
 
-        {currState === "Sign up" && (
+        {currState === "Sign up" && !isDataSubmitted && (
           <input type="text" className='p-2 border border-gray-500 rounded-md 
            focus:outline-none' placeholder='Full Name' required/>
         )}
         
+        {/* ------ */}
+        {!isDataSubmitted && (
+          <>
+          <input onChange= {(e)=>setEmail(e.target.value)} value={email}
+          type="email" placeholder='Email Address' required className='p-2 border
+          border-gray-500 rounded-md focus:outline-none focus:ring-2
+          focus:ring-indigo-500' />
+          </>
+        )}
       </form>
     </div>
   )
