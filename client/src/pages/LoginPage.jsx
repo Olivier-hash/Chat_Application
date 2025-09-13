@@ -61,6 +61,13 @@ function LoginPage() {
           {currState === "Sign up" ? "Create Account" : "Login Now"}
         </button>
 
+        {/* private policy and checkbox */}
+        <div>
+          <input type="checkbox" />
+          <p>Agree to the terms of use & privacy policy</p>
+        </div>
+
+        
       </form>
     </div>
   )
