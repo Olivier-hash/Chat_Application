@@ -20,10 +20,10 @@ function ProfilePage() {
           <h3 className='text-lg'>Profile details</h3>
           <label htmlFor="avatar" className='flex items-center gap-3 cursor-pointer'>
             <input onChange={(e)=>setSelectedImg(e.target.files[0])}
-             type="file" id='avatar' accept='.png, .jpg, .jpeg hidden'/>
+             type="file" id='avatar' accept='.png, .jpg, .jpeg ' hidden />
             <img src={selectedImg ? URL.createObjectURL(selectedImg): assets.avatar_icon}
             className={`w-12 h-12 ${selectedImg && 'rounded-full'}`} alt="" />
-            upload profile imagesDummyData
+            upload profile
           </label>
         </form>
         <img src="" alt="" />
