@@ -25,6 +25,10 @@ function ProfilePage() {
             className={`w-12 h-12 ${selectedImg && 'rounded-full'}`} alt="" />
             upload profile
           </label>
+          <input onChange={(e)=>setName(e.target.value)} value={name}
+          type="text" required placeholder='your name' 
+          className='p-2 border border-gray-500 rounded-md focus:outline-none
+           focus:ring-2 focus:ring-violet-500'/>
         </form>
         <img src="" alt="" />
       </div>
