@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import assets, {} from '../assets/assets'
 
 function ProfilePage() {
 
@@ -15,15 +16,17 @@ function ProfilePage() {
        flex items-center justify-between max-sm:flex-col-reverse rounded-lg'>
 
         <form className='flex flex-col gap-5 p-10 flex-1'>
+
           <h3 className='text-lg'>Profile details</h3>
           <label htmlFor="avatar" className='flex items-center gap-3 cursor-pointer'>
             <input onChange={(e)=>setSelectedImg(e.target.files[0])}
              type="file" id='avatar' accept='.png, .jpg, .jpeg hidden'/>
-            <img src={""} alt="" />
+            <img src={selectedImg ? URL.createObjectURL(selectedImg): assets.avatar_icon}
+            className={`w-12 h-12 ${selectedImg && 'rounded-full'}`} alt="" />
+            upload profile imagesDummyData
           </label>
         </form>
         <img src="" alt="" />
-
       </div>
     </div>
   )
