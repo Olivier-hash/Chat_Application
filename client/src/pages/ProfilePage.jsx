@@ -44,7 +44,8 @@ function ProfilePage() {
            text-white p-3 rounded-full text-lg cursor pointer'  type='submit'>Save </button>
 
         </form>
-        <img src="" alt="" />
+        <img className='max-w-44 aspect-square rounded-full mx-10 max-sm:mt-10'
+        src={assets.logo_icon} alt="" />
       </div>
     </div>
   )
