@@ -29,9 +29,10 @@ function ProfilePage() {
           type="text" required placeholder='your name' 
           className='p-2 border border-gray-500 rounded-md focus:outline-none
            focus:ring-2 focus:ring-violet-500'/>
-           <textarea placeholder='write profile bio' required
+           <textarea onChange={(e)=>setBio(e.target.value)} value={bio}
+           placeholder='write profile bio' required
            className='p-2 border border-gray-500 rounded-md focus:outline-none 
-           focus:ring-2 focus:ring-violet-500'>
+           focus:ring-2 focus:ring-violet-500' rows={4}>
 
            </textarea>
         </form>
