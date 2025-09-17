@@ -33,8 +33,11 @@ function ProfilePage() {
            placeholder='write profile bio' required
            className='p-2 border border-gray-500 rounded-md focus:outline-none 
            focus:ring-2 focus:ring-violet-500' rows={4}>
-
            </textarea>
+
+           <button  className='bg-gradient-to-r from-purple-400 to-violet-600 
+           text-white p-3 rounded-full text-lg cursor pointer'  type='submit'>Save </button>
+
         </form>
         <img src="" alt="" />
       </div>
