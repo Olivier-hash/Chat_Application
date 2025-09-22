@@ -14,6 +14,7 @@ const server = http.createServer(app);
 app.use(express.json({limit:"4mb"}));
 app.use(cors());     // CORS = Cross-Origin Resource Sharing.
 
+
 app.use("/api/status", (req,res)=> res.send("Server is live"));
 
 
