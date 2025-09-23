@@ -34,6 +34,8 @@ export const signup = async (req,res)=>{
         message: "Account created successfully"})
 
     } catch (error) {
+        console.log(error.message);
         
+        res.json({success: false, message: error.message})
     }
 }
