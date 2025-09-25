@@ -48,6 +48,10 @@ export const login = async (req, res) => {
         const { email, password } = req.body;
         const userData = await User.findOne({email})
 
+        if (!userData) {
+        return res.json({ success: false, message: "User not found" });
+        }
+
         const isPasswordCorrect = await bcrypt.compare(password, userData.password)
 
         if (!isPasswordCorrect) {
@@ -80,7 +84,7 @@ export const updateProfile = async (req,res)=> {
         const userId = req.user._id
         let updatedUser;
 
-        if (!profilepic) {
+        if (!profilePic) {
            updatedUser = await User.findByIdAndUpdate(userId, {bio, fullName},
            {new:true});
         }else{
