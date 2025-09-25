@@ -1,0 +1,20 @@
+import Message from "../models/Message.js";
+import User from "../models/User.js";
+
+// Get all users except the logged in user
+export const getUserForSidebar = async (req,res)=> {
+    try {
+        const userId = req.user._id;
+        const filteredUsers = await User.find({_id: {$ne: userId}}).select
+        ("-password");
+
+        // count number of messages not seen
+        const unseenMessage = {}
+        const promises = filteredUsers.map(async (user)=>{
+            const messages = await Message.find({senderId: user._id, receiverId:
+            userId, seen: false})
+        })
+    } catch (error) {
+        
+    }
+}
