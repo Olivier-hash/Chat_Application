@@ -62,7 +62,7 @@ export const AuthProvider = ({children})=>{
         setAuthUser(null);
         setOnlineUsers([]);
         axios.defaults.headers.common["token"] = null;
-        toast.success("logged dout successfully");
+        toast.success("logged out successfully");
         socket.disconnect();
     }
 
