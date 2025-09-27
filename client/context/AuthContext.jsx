@@ -47,7 +47,7 @@ export const AuthProvider = ({children})=>{
                 localStorage.setItem("token", data.token)
                 toast.success(data.message)
             }else{
-                 toast.error(error.message)
+                 toast.error(data.message)
             }
         } catch (error) {
             toast.error(error.message)
@@ -56,7 +56,7 @@ export const AuthProvider = ({children})=>{
 
     // Logout function to handle user logout and socket disconnection
 
-    const logout = async (params) => {
+    const logout = async () => {
         localStorage.removeItem("token");
         setSocket(null);
         setAuthUser(null);
@@ -103,7 +103,7 @@ export const AuthProvider = ({children})=>{
         if (token) {
             axios.defaults.headers.common["token"] = token;
         }
-        checkAuth
+        checkAuth();
     },[])
 
     const value = {
