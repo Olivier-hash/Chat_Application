@@ -2,6 +2,7 @@ import { Children, createContext, useEffect, useState } from "react";
 import axios from 'axios'
 import toast from "react-hot-toast";
 import {io} from "socket.io-client"
+import { data } from "react-router-dom";
 
 
 // Addition of backendurl
@@ -44,11 +45,29 @@ export const AuthProvider = ({children})=>{
                 axios.defaults.headers.common["token"] = data.token;
                 setToken(data.token);
                 localStorage.setItem("token", data.token)
+                toast.success(data.message)
+            }else{
+                 toast.error(error.message)
             }
         } catch (error) {
-            
+            toast.error(error.message)
         }
     }
+
+    // Logout function to handle user logout and socket disconnection
+
+    const logut = async (params) => {
+        localStorage.removeItem("token");
+        setSocket(null);
+        setAuthUser(null);
+        setOnlineUsers([]);
+        axios.defaults.headers.common["token"] = null;
+        toast.success("logged dout successfully");
+        socket.disconnect();
+    }
+
+
+
     // connect socket function to handle socket connection and online users updates
     const connectSocket = (userData)=>{
         if (!userData  || socket?.connected) return;
