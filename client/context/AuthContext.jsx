@@ -1,5 +1,7 @@
-import { Children, createContext, useState } from "react";
+import { Children, createContext, useEffect, useState } from "react";
 import axios from 'axios'
+import toast from "react-hot-toast";
+import {io} from "socket.io-client"
 
 
 // Addition of backendurl
@@ -24,11 +26,52 @@ export const AuthProvider = ({children})=>{
             const { data } = await axios.get("/api/auth/check")
             if (data.success) {
                 setAuthUser(data.user)
+                connectSocket(data.user)
+            }
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
+    // Login function to handle user authentification and socket connection
+
+    const login = async (state, credentials) => {
+        try {
+            const { data } = await axios.post(`./api/auth/${state}`, credentials);
+            if (data.success) {
+                setAuthUser(data.userData)
+                connectSocket(data.userData)
+                axios.defaults.headers.common["token"] = data.token;
+                setToken(data.token);
+                localStorage.setItem("token", data.token)
             }
         } catch (error) {
             
         }
     }
+    // connect socket function to handle socket connection and online users updates
+    const connectSocket = (userData)=>{
+        if (!userData  || socket?.connected) return;
+        const newSocket = io(backendUrl, {
+            query:{
+                userId : userData._id,
+            }
+        });
+        newSocket.connect();
+        setSocket(newSocket);
+
+
+        newSocket.on("getOnlineUsers", (userIds)=>{
+            setOnlineUsers(userIds);
+        })
+    }
+
+    useEffect(()=>{
+        if (token) {
+            axios.defaults.headers.common["token"] = token;
+        }
+        checkAuth
+    },[])
     const value = {
         axios,
         authUser,
