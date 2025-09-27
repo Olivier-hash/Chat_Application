@@ -56,7 +56,7 @@ export const AuthProvider = ({children})=>{
 
     // Logout function to handle user logout and socket disconnection
 
-    const logut = async (params) => {
+    const logout = async (params) => {
         localStorage.removeItem("token");
         setSocket(null);
         setAuthUser(null);
@@ -64,6 +64,20 @@ export const AuthProvider = ({children})=>{
         axios.defaults.headers.common["token"] = null;
         toast.success("logged dout successfully");
         socket.disconnect();
+    }
+
+    // Update profile function to handle user profile updates
+
+    const updateProfile = async (body) => {
+        try {
+            const { data } = await axios.put("/api/auth/update-profile", body);
+            if (data.success) {
+                setAuthUser(data.user);
+                toast.success("profile updated successfully")
+            }
+        } catch (error) {
+            toast.error(error.message)
+        }
     }
 
 
@@ -91,11 +105,16 @@ export const AuthProvider = ({children})=>{
         }
         checkAuth
     },[])
+
     const value = {
         axios,
         authUser,
         onlineUsers,
-        socket
+        socket,
+        login,
+        logout,
+        updateProfile
+
     }
 
     return (
