@@ -13,11 +13,11 @@ const  { getUsers, users, selectedUser, setSelectedUser,
 // getting logout function from context of backend API
 const { logout, onlineUsers } = useContext(AuthContext)
 
-const [ input, setInput ] = useState("")
+const [ input, setInput ] = useState(false)
 
 const navigate = useNavigate();
 
-const filteredUsers = input ? users.filter((user)=> user.fullName.toLowerCase().includes(input.toLowerCase)) : users;
+const filteredUsers = input ? users.filter((user)=> user.fullName.toLowerCase().includes(input.toLowerCase())) : users;
 
 useEffect(()=> {
     getUsers();

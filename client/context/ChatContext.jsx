@@ -1,7 +1,7 @@
-import { Children, createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import toast from "react-hot-toast";
-import { data } from "react-router-dom";
+
 
 
 export const ChatContext = createContext();
@@ -54,7 +54,7 @@ export const ChatProvider = ({ children })=>{
                     toast.error(data.message);
                 }
         } catch (error) {
-            
+              toast.error(error.message || "Failed to send message");
         }
     }
 
@@ -68,7 +68,7 @@ export const ChatProvider = ({ children })=>{
                 setMessages((prevMessages)=> [...prevMessages, newMessage])
                 axios.put(`/api/messages/mark/${newMessage._id}`);
             }else{
-                setUnseenMessages(()=>({
+                setUnseenMessages((prevUnseenMessages)=>({
                     ...prevUnseenMessages, [newMessage.senderId] :  
                     prevUnseenMessages[newMessage.senderId] ? prevUnseenMessages
                     [newMessage.senderId] +1 : 1
