@@ -2,9 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import assets from '../assets/assets'
 import {useNavigate} from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext';
-// import { ChatContext } from '../../context/chatContext';
-import {ChatProvider} from "../../context/ChatContext"
-
+import { ChatContext } from '../../context/chatContext';
 
 //function Sidebar({selectedUser, setSelectedUser}) {
 function Sidebar() {
