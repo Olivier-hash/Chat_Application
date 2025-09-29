@@ -7,7 +7,7 @@ import { ChatContext } from '../../context/chatContext';
 //function Sidebar({selectedUser, setSelectedUser}) {
 function Sidebar() {
 
-const  { getUsers, users, selectedUser, setSelectedUser, 
+const  { getUsebbrs, users, selectedUser, setSelectedUser, 
       unseenMessages, setUnseenMessages } = useContext(ChatContext);
 
 // getting logout function from context of backend API
