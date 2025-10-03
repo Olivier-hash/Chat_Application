@@ -1,8 +1,7 @@
-import { Children, createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import axios from 'axios'
 import toast from "react-hot-toast";
-import {io} from "socket.io-client"
-import { data } from "react-router-dom";
+import {io} from "socket.io-client";
 
 
 // Addition of backendurl
@@ -19,7 +18,7 @@ export const AuthProvider = ({children})=>{
     const [token, setToken] = useState(localStorage.getItem("token"));
     const [authUser, setAuthUser] = useState(null);
     const [onlineUsers, setOnlineUsers] = useState([]);
-    const [socket, setSocket ] = useState(null)
+    const [socket, setSocket ] = useState(null);
 
     // Check if user is authenticated and if so, set the user data and connect the socket
     const checkAuth = async ()=> {
@@ -38,7 +37,7 @@ export const AuthProvider = ({children})=>{
 
     const login = async (state, credentials) => {
         try {
-            const { data } = await axios.post(`./api/auth/${state}`, credentials);
+            const { data } = await axios.post(`/api/auth/${state}`, credentials);
             if (data.success) {
                 setAuthUser(data.userData)
                 connectSocket(data.userData)
@@ -58,7 +57,7 @@ export const AuthProvider = ({children})=>{
 
     const logout = async () => {
         localStorage.removeItem("token");
-        setSocket(null);
+        setToken(null);
         setAuthUser(null);
         setOnlineUsers([]);
         axios.defaults.headers.common["token"] = null;
