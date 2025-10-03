@@ -3,6 +3,11 @@ import Sidebar from '../components/Sidebar'
 import ChatContainer from '../components/ChatContainer'
 import RightSidebar from '../components/RightSidebar'
 
+
+// function
+
+
+
 function HomePage() {
 
  const [selectedUser, setSelectedUser] = useState(null)
