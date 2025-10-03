@@ -2,13 +2,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import assets from '../assets/assets'
 import {useNavigate} from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext';
-import { ChatContext } from '../../context/chatContext';
+import { ChatContext} from '../../context/chatContext';
+// import { ChatContext } from '../../context/chatContext';
 
 //function Sidebar({selectedUser, setSelectedUser}) {
 function Sidebar() {
 
-const  { getUsebbrs, users, selectedUser, setSelectedUser, 
-      unseenMessages, setUnseenMessages } = useContext(ChatContext);
+const  { getUsers, users, selectedUser, setSelectedUser, 
+      unseenMessages, setUnseenMessages } = useContext(ChatContext)
 
 // getting logout function from context of backend API
 const { logout, onlineUsers } = useContext(AuthContext)
