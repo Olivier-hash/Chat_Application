@@ -1,11 +1,20 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import assets, { messagesDummyData } from '../assets/assets'
 import { formatMessageTime } from '../lib/utilis'
+import { ChatContext } from '../../context/ChatContext'
+import { AuthContext } from '../../context/AuthContext'
                                                              // Props Destructuring
-function ChatContainer({selectedUser, setSelectedUser}) {    // added all setSelected userprops to be used onclick as a Function
+function ChatContainer() {    // added all setSelected userprops to be used onclick as a Function
   
+  const {messages, selectedUser, setSelectedUser, sendMessage,
+         getMessages} = useContext(ChatContext)
+
+  const { authUser, onlineUsers } = useContext(AuthContext)
 
   const scrollEnd = useRef()
+
+
+  //created input state where to store message when we type
 
 
   useEffect(()=>{     // useEffect with depedency
