@@ -4,7 +4,6 @@ import ChatContainer from '../components/ChatContainer'
 import RightSidebar from '../components/RightSidebar'
 
 
-// function to generate context from Api
 
 
 
