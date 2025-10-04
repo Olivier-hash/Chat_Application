@@ -4,6 +4,7 @@ import { formatMessageTime } from '../lib/utilis'
 import { ChatContext } from '../../context/ChatContext'
 import { AuthContext } from '../../context/AuthContext'
 import { set } from 'mongoose'
+import toast from 'react-hot-toast'
                                                              // Props Destructuring
 function ChatContainer() {    // added all setSelected userprops to be used onclick as a Function
   
@@ -16,10 +17,30 @@ function ChatContainer() {    // added all setSelected userprops to be used oncl
 
   const [input, setInput] = useState('');    //created input state where to store message when we type in input field
 
+  // Handle sending a message
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (input.trim() === "") return null;
+    await sendMessage({text: input.trim()});
+    setInput("")
   }
+  
+  // Handle sending an Image
+  const handleSendImage = async (e) => {
+    const file = e.target.files[0];
+    if (!file || !file.type.startsWith("image/")) {
+       toast.error("select an image file")
+       return;
+    }
+    const reader = new FileReader();
+
+    reader.onloadend = async () => {
+      await sendMessage({image: reader.result})
+      e.target.value = ""
+    }
+    reader.readAsDataURL(file)
+  }
+
 
 
   useEffect(()=>{     // useEffect with depedency
@@ -32,9 +53,10 @@ function ChatContainer() {    // added all setSelected userprops to be used oncl
     <div className='h-full overflow-scroll relative backdrop-blur-lg'>
       {/* --------------- header --------------- */}
       <div className='flex items-center gap-3 py-3 mx-4 border-b border-stone-500'>
-        <img src={assets.profile_martin} alt="" className='w-8 rounded-full' />
+        <img src={selectedUser.profilePic || assets.avatar_icon } alt="" className='w-8 rounded-full' />
         <p className='flex-1 text-lg text-white flex items-center gap-2'>           
-          Martin Johnson
+          {selectedUser.fullName}
+          {onlineUsers.includes(selectedUser._id)}
           <span className='w-2 h-2 rounded-full bg-green-500'></span>
         </p>
         {/* Info icon and description */}
@@ -75,7 +97,8 @@ function ChatContainer() {    // added all setSelected userprops to be used oncl
           onKeyDown={(e)=> e.key === "Enter" ? handleSendMessage(e) : null} placeholder='send a message' 
           className='flex-1 text-sm p-3 border-none rounded-lg outline-none text-white placeholder-gray-400'/>
 
-          <input type="file" id='image' accept='image/png, image/jpeg' hidden/>
+          <input onChange={handleSendMessage}
+          type="file" id='image' accept='image/png, image/jpeg' hidden/>
 
           <label htmlFor="image">
             <img src={assets.gallery_icon} alt="" className='w-5 mr-2 cursor-pointer'/>
