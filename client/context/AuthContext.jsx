@@ -87,6 +87,7 @@ export const AuthProvider = ({children})=>{
         const newSocket = io(backendUrl, {
             query:{
                 userId : userData._id,
+                transports: ["websocket"] // added after online error in display
             }
         });
         newSocket.connect();
