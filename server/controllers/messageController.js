@@ -17,7 +17,7 @@ export const getUserForSidebar = async (req,res)=> {
             const messages = await Message.find({senderId: user._id, receiverId:
             userId, seen: false})
             if (messages.length > 0) {
-                unseenMessage[user._id] = messages.length
+                unseenMessages[user._id] = messages.length
             }
         })
         await Promise.all(promises);
@@ -39,7 +39,7 @@ export const getMessages = async (req,res) => {
         const messages =  await Message.find({
             $or: [
                 {senderId: myId, receiverId: selectedUserId},
-                {senderId: myId, selectedUserId, receiverId: myId}
+                {senderId: selectedUserId, receiverId: myId}   // changed senderId: myId, to senderId: selectedUserId, 
             ]
         })
         // mark message as read
@@ -92,7 +92,7 @@ export const sendMessage = async (req,res) => {
 
         // Emit the new message to the receiver's socket 
         const receiverSocketId = userSocketMap[receiverId];
-        if (receiverId) {
+        if (receiverSocketId) {   // changed receiverId
             io.to(receiverSocketId).emit("newMessage", newMessage)
         }
 
