@@ -101,7 +101,7 @@ function ChatContainer() {    // added all setSelected userprops to be used oncl
           onKeyDown={(e)=> e.key === "Enter" ? handleSendMessage(e) : null} placeholder='send a message' 
           className='flex-1 text-sm p-3 border-none rounded-lg outline-none text-white placeholder-gray-400'/>
 
-          <input onChange={handleSendMessage}
+          <input onChange={handleSendImage}
           type="file" id='image' accept='image/png, image/jpeg' hidden/>
 
           <label htmlFor="image">
