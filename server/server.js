@@ -14,7 +14,8 @@ const server = http.createServer(app);
 
 // Initialize socket.io server
 export const io = new Server(server, {
-    cors: {origin: ""}
+    cors: {origin: "http://localhost:5173"},
+    methods: ["GET", "POST"],  // changed after error in online display
 })
 
 // Store online Users
