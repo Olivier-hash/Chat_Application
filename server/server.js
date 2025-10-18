@@ -12,9 +12,17 @@ import { Server } from "socket.io";
 const app =express();
 const server = http.createServer(app);
 
+
+// ✅ Allow both local & deployed frontend URLs
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://chat-app-orcin-seven-38.vercel.app" // <-- Replace with your actual Vercel URL
+];
+
+
 // Initialize socket.io server
 export const io = new Server(server, {
-    cors: {origin: "http://localhost:5173"},
+    cors: {origin: allowedOrigins},
     methods: ["GET", "POST"],  // changed after error in online display
 })
 
@@ -39,9 +47,13 @@ io.on("connection", (socket)=>{
     })
 })
 
-// Middleware setup
-app.use(express.json({limit:"4mb"}));
-app.use(cors());     // CORS = Cross-Origin Resource Sharing.
+// Middleware setup with allowed origins CORS = Cross-Origin Resource Sharing.
+app.use(
+  cors({                           
+    origin: allowedOrigins,
+    credentials: true, // if you send cookies or auth headers
+  })
+);    
 
 // Routes setup
 app.use("/api/status", (req,res)=> res.send("Server is live"));
