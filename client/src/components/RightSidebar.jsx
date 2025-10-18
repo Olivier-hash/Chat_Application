@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import assets, { imagesDummyData } from '../assets/assets'
+import { ChatContext } from '../../context/ChatContext'
+import { AuthContext } from '../../context/AuthContext'
 
-function RightSidebar({selectedUser}) { // destructurung selected user from the props 
+function RightSidebar() { // destructurung selected user from the props
+  
+  const {selectedUser, messages} = useContext(ChatContext)
+  const {logout, onlineUsers} = useContext(AuthContext)
+  const [msgImages, setMsgImages] = useState([])
+
+
+  // Get all images from the messages  and set them to state
+
+  useEffect(()=>{
+    setMsgImages(
+      messages.filter(msg => msg.image).map(msg => msg.image)
+    )
+  },[messages])
+
   return selectedUser && (
   
     <div className={`bg-[#818582]/10 text-white w-full relative overflow-y-scroll
