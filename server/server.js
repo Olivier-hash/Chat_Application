@@ -16,6 +16,7 @@ const server = http.createServer(app);
 // ✅ Allow both local & deployed frontend URLs
 const allowedOrigins = [
   "http://localhost:5173",
+  "http://localhost:5174",  // From GPT
   "https://chat-app-orcin-seven-38.vercel.app" // <-- Replace with your actual Vercel URL
 ];
 
@@ -53,7 +54,15 @@ app.use(
     origin: allowedOrigins,
     credentials: true, // if you send cookies or auth headers
   })
-);    
+);   
+
+
+// Parse incoming JSON and form data   (Added form GPT after arror)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+
 
 // Routes setup
 app.use("/api/status", (req,res)=> res.send("Server is live"));
